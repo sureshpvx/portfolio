@@ -1,9 +1,3 @@
-databases:
-  - name: portfolio-db
-    databaseName: portfolio
-    user: portfolio
-    plan: free
-
 services:
   - type: web
     name: portfolio-web
@@ -12,9 +6,5 @@ services:
     startCommand: "bundle exec puma -C config/puma.rb"
     plan: free
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: portfolio-db
-          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
