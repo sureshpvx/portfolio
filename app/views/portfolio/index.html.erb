@@ -1,0 +1,279 @@
+<% content_for :title, "#{@profile[:name]} - Ruby on Rails Developer" %>
+
+<div class="portfolio-shell overflow-hidden bg-[#0a0a0a] text-[#F5F2EB]">
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0a0a0a]/85 backdrop-blur">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Primary navigation">
+      <%= link_to root_path, class: "group flex items-center gap-3 font-mono text-sm" do %>
+        <span class="grid h-9 w-9 place-items-center rounded-lg border border-[#CC342D]/50 bg-[#CC342D]/15 text-[#F5F2EB]">&lt;ss/&gt;</span>
+        <span class="hidden sm:block"><%= @profile[:name] %></span>
+      <% end %>
+
+      <div class="hidden items-center gap-6 text-sm text-[#F5F2EB]/70 md:flex">
+        <a class="hover:text-white" href="#dependencies">Core Dependencies</a>
+        <a class="hover:text-white" href="#deployments">Deployments</a>
+        <%= link_to "Hypee", "https://hypee.shop/", target: "_blank", rel: "noopener", class: "hover:text-white" %>
+        <a class="hover:text-white" href="#observatory">Observatory</a>
+        <a class="hover:text-white" href="#contact">Handshake</a>
+      </div>
+
+      <%= link_to "Open /terminal", terminal_path, class: "rounded-lg border border-[#CC342D]/50 px-4 py-2 font-mono text-sm text-[#F5F2EB] transition hover:bg-[#CC342D]/20" %>
+    </nav>
+  </header>
+
+  <section class="grid-bg relative min-h-screen px-4 pb-20 pt-28 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+      <div class="relative z-10">
+        <div class="mb-6 flex flex-wrap gap-3 font-mono text-xs text-[#F5F2EB]/70">
+          <span class="rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-3 py-2 text-emerald-200">production-ready rails</span>
+          <span class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2">remote from <%= @profile[:location] %></span>
+          <span data-controller="clock" data-clock-timezone-value="Asia/Kolkata" class="rounded-lg border border-[#CC342D]/30 bg-[#CC342D]/10 px-3 py-2 text-[#F5F2EB]">
+            Nagaur time: <span data-clock-target="time">syncing</span>
+          </span>
+        </div>
+
+        <p class="mb-4 font-mono text-sm text-[#CC342D]">The Rails Craftsman</p>
+        <h1 class="max-w-4xl text-5xl font-black leading-[0.95] text-white sm:text-6xl lg:text-7xl">
+          <%= @profile[:name] %><br>
+          <span class="text-[#F5F2EB]/72">builds Rails systems that feel fast because they are.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[#F5F2EB]/72">
+          Ruby on Rails developer focused on PostgreSQL search, Turbo-powered interfaces, Razorpay payment integrity, and deployable e-commerce architecture.
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="#hypee" class="rounded-lg bg-[#CC342D] px-5 py-3 text-center font-semibold text-white shadow-[0_0_32px_rgba(204,52,45,0.35)] transition hover:bg-[#e0443b]">
+            Explore the Architecture
+          </a>
+          <%= link_to "View Production Logs", terminal_path, class: "rounded-lg border border-white/15 px-5 py-3 text-center font-mono text-[#F5F2EB] transition hover:border-[#CC342D]/60 hover:bg-white/[0.04]" %>
+        </div>
+
+        <div class="terminal-shell mt-10 max-w-3xl rounded-lg border border-white/12 bg-black/70 shadow-2xl shadow-black/40">
+          <div class="flex items-center justify-between border-b border-white/10 px-4 py-3">
+            <div class="flex gap-2" aria-hidden="true">
+              <span class="h-3 w-3 rounded-full bg-[#CC342D]"></span>
+              <span class="h-3 w-3 rounded-full bg-amber-300"></span>
+              <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+            </div>
+            <span class="font-mono text-xs text-[#F5F2EB]/45">bin/rails production:boot</span>
+          </div>
+          <pre class="min-h-64 overflow-hidden p-5 font-mono text-sm leading-7 text-emerald-200" data-controller="typewriter" data-typewriter-lines-value="<%= @terminal_lines.to_json %>"><code data-typewriter-target="output"></code><span class="terminal-cursor" aria-hidden="true"></span></pre>
+        </div>
+      </div>
+
+      <div class="portrait-shell relative mx-auto w-full max-w-lg lg:mr-0">
+        <div class="absolute inset-0 translate-x-5 translate-y-5 rounded-lg border border-[#CC342D]/30"></div>
+        <figure class="relative overflow-hidden rounded-lg border border-white/12 bg-white/[0.04] shadow-2xl shadow-black/50">
+          <%= image_tag "hero-rails-developer.png", alt: "Editorial portrait-style image of a Rails developer workstation with ruby red lighting", class: "aspect-[4/5] h-full w-full object-cover" %>
+          <figcaption class="absolute inset-x-4 bottom-4 rounded-lg border border-white/12 bg-black/70 p-4 backdrop-blur">
+            <p class="font-mono text-xs text-[#CC342D]">observability snapshot</p>
+            <div class="mt-2 grid grid-cols-3 gap-3 text-sm">
+              <span><strong class="block text-white">Rails 8</strong><span class="text-[#F5F2EB]/55">core</span></span>
+              <span><strong class="block text-white">Turbo</strong><span class="text-[#F5F2EB]/55">ux</span></span>
+              <span><strong class="block text-white">Postgres</strong><span class="text-[#F5F2EB]/55">search</span></span>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="dependencies" class="px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-10 max-w-3xl">
+        <p class="font-mono text-sm text-[#CC342D]">Core Dependencies</p>
+        <h2 class="mt-3 text-4xl font-black text-white sm:text-5xl">Every card maps to production Rails work.</h2>
+        <p class="mt-4 text-[#F5F2EB]/65">Interactive pieces show the same patterns called out in the blueprint: search, payment states, Turbo updates, QR tooling, and small Stimulus controllers.</p>
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-6">
+        <article class="glass-card tilt-card lg:col-span-3" data-controller="search-demo tilt" data-search-demo-products-value="<%= @search_products.to_json %>" data-action="mousemove->tilt#move mouseleave->tilt#leave">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="font-mono text-sm text-[#CC342D]">PostgreSQL Card</p>
+              <h3 class="mt-2 text-2xl font-bold text-white">Fuzzy product search</h3>
+              <p class="mt-2 text-sm leading-6 text-[#F5F2EB]/62">A Rails-side mini demo shaped like a pg_search workflow: prefix matching, fuzzy scoring, and latency feedback.</p>
+            </div>
+            <span class="rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-3 py-2 font-mono text-xs text-emerald-200" data-search-demo-target="metric">28ms</span>
+          </div>
+          <label class="mt-6 block font-mono text-xs text-[#F5F2EB]/55" for="portfolio-search">search query</label>
+          <input id="portfolio-search" data-search-demo-target="query" data-action="input->search-demo#search" class="mt-2 w-full rounded-lg border border-white/12 bg-black/55 px-4 py-3 font-mono text-sm text-white outline-none transition placeholder:text-[#F5F2EB]/30 focus:border-[#CC342D]" value="rails" autocomplete="off">
+          <div class="mt-4 grid gap-3" data-search-demo-target="results"></div>
+        </article>
+
+        <article class="glass-card tilt-card lg:col-span-3" data-controller="tilt" data-action="mousemove->tilt#move mouseleave->tilt#leave">
+          <p class="font-mono text-sm text-[#CC342D]">Rails 8 Card</p>
+          <h3 class="mt-2 text-2xl font-bold text-white">MVC layers with clear pressure boundaries</h3>
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            <div class="architecture-layer translate-y-4">
+              <span class="font-mono text-xs text-[#F5F2EB]/45">view</span>
+              <strong>ERB + Turbo Frames</strong>
+            </div>
+            <div class="architecture-layer">
+              <span class="font-mono text-xs text-[#F5F2EB]/45">controller</span>
+              <strong>Thin routing logic</strong>
+            </div>
+            <div class="architecture-layer -translate-y-4">
+              <span class="font-mono text-xs text-[#F5F2EB]/45">model</span>
+              <strong>Postgres-backed rules</strong>
+            </div>
+          </div>
+          <p class="mt-6 text-sm leading-6 text-[#F5F2EB]/62">Hover the card to reveal depth: service objects, query scopes, and small controllers stay in their lanes.</p>
+        </article>
+
+        <article class="glass-card tilt-card lg:col-span-2" data-controller="payment-flow tilt" data-action="mousemove->tilt#move mouseleave->tilt#leave">
+          <p class="font-mono text-sm text-[#CC342D]">Payments Card</p>
+          <h3 class="mt-2 text-2xl font-bold text-white">Razorpay state machine</h3>
+          <div class="mt-5 space-y-2" data-payment-flow-target="steps">
+            <% ["checkout", "signature", "webhook", "fulfilled"].each_with_index do |step, index| %>
+              <button type="button" data-action="payment-flow#select" data-payment-flow-index-param="<%= index %>" class="payment-step w-full rounded-lg border border-white/10 px-4 py-3 text-left font-mono text-sm transition">
+                <span class="mr-3 text-[#CC342D]">0<%= index + 1 %></span><%= step %>
+              </button>
+            <% end %>
+          </div>
+          <p class="mt-4 text-sm leading-6 text-[#F5F2EB]/62" data-payment-flow-target="copy"></p>
+        </article>
+
+        <article class="glass-card lg:col-span-2">
+          <p class="font-mono text-sm text-[#CC342D]">Turbo/Turbo Streams Card</p>
+          <h3 class="mt-2 text-2xl font-bold text-white">Modal without a full reload</h3>
+          <p class="mt-3 text-sm leading-6 text-[#F5F2EB]/62">This button requests a Rails partial into a Turbo frame while the rest of the page stays alive.</p>
+          <%= link_to "Stream modal", modal_demo_path, data: { turbo_frame: "turbo_demo" }, class: "mt-5 inline-flex rounded-lg bg-white px-4 py-3 font-semibold text-black transition hover:bg-[#F5F2EB]" %>
+          <%= turbo_frame_tag "turbo_demo", class: "mt-4 block" %>
+        </article>
+
+        <article class="glass-card lg:col-span-2" data-controller="qr-studio">
+          <p class="font-mono text-sm text-[#CC342D]">QR Code Engine</p>
+          <h3 class="mt-2 text-2xl font-bold text-white">Brandable QR pattern studio</h3>
+          <label class="mt-5 block font-mono text-xs text-[#F5F2EB]/55" for="qr-payload">payload</label>
+          <input id="qr-payload" value="https://hypee.example/orders/42" data-qr-studio-target="payload" data-action="input->qr-studio#render" class="mt-2 w-full rounded-lg border border-white/12 bg-black/55 px-3 py-2 font-mono text-xs outline-none focus:border-[#CC342D]">
+          <div class="mt-4 flex items-center gap-3">
+            <input aria-label="QR foreground color" type="color" value="#cc342d" data-qr-studio-target="foreground" data-action="input->qr-studio#render" class="h-10 w-12 rounded-lg border border-white/12 bg-black">
+            <input aria-label="QR background color" type="color" value="#f5f2eb" data-qr-studio-target="background" data-action="input->qr-studio#render" class="h-10 w-12 rounded-lg border border-white/12 bg-black">
+            <span class="font-mono text-xs text-[#F5F2EB]/55">preview updates instantly</span>
+          </div>
+          <div class="mt-5 grid place-items-center rounded-lg border border-white/10 bg-black/35 p-4">
+            <div class="qr-preview" data-qr-studio-target="grid" aria-label="Generated QR-style pattern preview"></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <% @skills.each do |skill| %>
+          <article class="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+            <p class="font-mono text-xs text-[#CC342D]"><%= skill[:category] %></p>
+            <div class="mt-3 flex items-start justify-between gap-4">
+              <h3 class="text-xl font-bold text-white"><%= skill[:name] %></h3>
+              <span class="rounded-lg border border-white/10 px-2 py-1 font-mono text-xs text-[#F5F2EB]/65"><%= skill[:metric] %></span>
+            </div>
+            <p class="mt-3 text-sm leading-6 text-[#F5F2EB]/60"><%= skill[:description] %></p>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section id="deployments" class="border-y border-white/10 bg-[#0F0F0F] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-6xl">
+      <div class="mb-12 max-w-3xl">
+        <p class="font-mono text-sm text-[#CC342D]">Production Diary</p>
+        <h2 class="mt-3 text-4xl font-black text-white sm:text-5xl">Experience as deployment nodes.</h2>
+      </div>
+
+      <div class="relative">
+        <div class="pipeline-line absolute bottom-0 left-4 top-0 w-px bg-white/10 md:left-1/2"></div>
+        <div class="grid gap-8">
+          <% @timeline.each_with_index do |node, index| %>
+            <article class="timeline-node relative grid gap-4 md:grid-cols-2 md:gap-10">
+              <div class="<%= index.even? ? 'md:text-right' : 'md:col-start-2' %>">
+                <span class="inline-flex rounded-lg border <%= node[:status] == 'deployed' ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-200' : 'border-amber-300/30 bg-amber-300/10 text-amber-100' %> px-3 py-2 font-mono text-xs">
+                  <%= node[:status] %>
+                </span>
+                <h3 class="mt-4 text-2xl font-bold text-white"><%= node[:title] %></h3>
+                <p class="mt-2 font-mono text-sm text-[#F5F2EB]/45"><%= node[:company] %> / <%= node[:duration] %></p>
+                <p class="mt-4 text-[#F5F2EB]/65"><%= node[:description] %></p>
+                <details class="mt-4 rounded-lg border border-white/10 bg-black/30 p-4 text-left">
+                  <summary class="cursor-pointer font-mono text-sm text-[#CC342D]">expand architecture note</summary>
+                  <p class="mt-3 text-sm leading-6 text-[#F5F2EB]/62"><%= node[:detail] %></p>
+                </details>
+              </div>
+            </article>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hypee" class="px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <p class="font-mono text-sm text-[#CC342D]">Flagship Project</p>
+        <h2 class="mt-3 text-4xl font-black text-white sm:text-5xl">Hypee is the architecture proof.</h2>
+        <p class="mt-5 text-lg leading-8 text-[#F5F2EB]/68">A full-stack e-commerce platform built around multi-model search, role-aware admin operations, Razorpay checkout verification, OTP authentication, and order history preservation.</p>
+        <%= link_to "Open Hypee live website", "https://hypee.shop/", target: "_blank", rel: "noopener", class: "mt-8 inline-flex rounded-lg bg-[#CC342D] px-5 py-3 font-semibold text-white transition hover:bg-[#e0443b]" %>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <% @hypee_metrics.each do |label, value| %>
+          <div class="rounded-lg border border-white/10 bg-white/[0.04] p-5">
+            <p class="font-mono text-xs text-[#F5F2EB]/45"><%= label %></p>
+            <strong class="mt-2 block text-3xl text-white"><%= value %></strong>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section id="observatory" class="bg-[#0F0F0F] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div>
+          <p class="font-mono text-sm text-[#CC342D]">Code Observatory</p>
+          <h2 class="mt-3 text-4xl font-black text-white sm:text-5xl">Snippets with production habits baked in.</h2>
+        </div>
+        <p class="max-w-xl text-[#F5F2EB]/62">Editable playgrounds can be wired next. For now, these snippets document the exact patterns the portfolio is selling.</p>
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-3">
+        <% @snippets.each do |snippet| %>
+          <article class="rounded-lg border border-white/10 bg-black/55">
+            <div class="border-b border-white/10 p-4">
+              <p class="font-mono text-xs text-[#CC342D]"><%= snippet[:category] %></p>
+              <h3 class="mt-2 font-semibold text-white"><%= snippet[:title] %></h3>
+            </div>
+            <pre class="code-block overflow-x-auto p-4 text-sm leading-6"><code><%= snippet[:code] %></code></pre>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+      <div>
+        <p class="font-mono text-sm text-[#CC342D]">Initiate Handshake</p>
+        <h2 class="mt-3 text-4xl font-black text-white sm:text-5xl">Open a connection without the boring form.</h2>
+        <p class="mt-5 leading-8 text-[#F5F2EB]/68"><%= @profile[:availability] %>. Start with the project shape, timezone, budget range, and what needs to ship first.</p>
+        <p class="mt-6 rounded-lg border border-white/10 bg-white/[0.04] p-4 font-mono text-sm text-[#F5F2EB]/75">Currently in <%= @profile[:location] %>.</p>
+      </div>
+
+      <div class="terminal-shell rounded-lg border border-white/12 bg-black/70">
+        <div class="border-b border-white/10 p-4 font-mono text-xs text-[#F5F2EB]/45">contact shell</div>
+        <div class="p-5" data-controller="contact-command" data-contact-command-email-value="<%= @profile[:email] %>">
+          <label class="font-mono text-sm text-emerald-200" for="contact-command"><%= @profile[:email] %>$</label>
+          <div class="mt-3 flex gap-3">
+            <input id="contact-command" data-contact-command-target="input" data-action="keydown.enter->contact-command#submit" class="min-w-0 flex-1 rounded-lg border border-white/12 bg-[#0a0a0a] px-4 py-3 font-mono text-sm text-white outline-none placeholder:text-[#F5F2EB]/30 focus:border-[#CC342D]" placeholder="type: start project discovery">
+            <button type="button" data-action="contact-command#submit" class="rounded-lg bg-[#CC342D] px-4 py-3 font-semibold text-white">send</button>
+          </div>
+          <div class="mt-5 min-h-16 rounded-lg border border-white/10 bg-white/[0.03] p-4 font-mono text-sm text-[#F5F2EB]/68" data-contact-command-target="output">Awaiting command.</div>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a class="rounded-lg border border-white/10 px-4 py-2 transition hover:border-[#CC342D]/60 hover:text-white" href="mailto:<%= @profile[:email] %>">Email</a>
+            <a class="rounded-lg border border-white/10 px-4 py-2 transition hover:border-[#CC342D]/60 hover:text-white" href="tel:<%= @profile[:phone].gsub(/\s+/, '') %>">Phone: <%= @profile[:phone] %></a>
+            <a class="rounded-lg border border-white/10 px-4 py-2 transition hover:border-[#CC342D]/60 hover:text-white" href="<%= @profile[:github] %>" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="rounded-lg border border-white/10 px-4 py-2 transition hover:border-[#CC342D]/60 hover:text-white" href="<%= @profile[:linkedin] %>" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <%= link_to "Terminal", terminal_path, class: "rounded-lg border border-white/10 px-4 py-2 transition hover:border-[#CC342D]/60 hover:text-white" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,127 @@
+<% content_for :title, "Hypee Case Study - #{@profile[:name]}" %>
+
+<div class="portfolio-shell min-h-screen bg-[#0a0a0a] text-[#F5F2EB]">
+  <header class="border-b border-white/10 bg-[#0a0a0a]/90">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <%= link_to "<- Back to portfolio", root_path, class: "font-mono text-sm text-[#F5F2EB]/70 hover:text-white" %>
+      <%= link_to "Open /terminal", terminal_path, class: "rounded-lg border border-[#CC342D]/50 px-4 py-2 font-mono text-sm hover:bg-[#CC342D]/15" %>
+    </nav>
+  </header>
+
+  <section class="grid-bg px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div>
+        <p class="font-mono text-sm text-[#CC342D]">Hypee Architecture Deep-Dive</p>
+        <h1 class="mt-4 text-5xl font-black leading-none text-white sm:text-6xl">Full-stack commerce without unnecessary machinery.</h1>
+        <p class="mt-6 text-lg leading-8 text-[#F5F2EB]/68">Hypee combines Rails conventions, PostgreSQL search, Razorpay payment integrity, Devise/OTP authentication, and admin workflows into one production-minded e-commerce system.</p>
+      </div>
+
+      <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/40">
+        <div class="rounded-lg border border-white/10 bg-black/55 p-4">
+          <div class="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+            <div>
+              <p class="font-mono text-xs text-[#CC342D]">admin dashboard</p>
+              <h2 class="font-semibold text-white">Order operations</h2>
+            </div>
+            <span class="rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 font-mono text-xs text-emerald-200">live</span>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-3">
+            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+              <p class="font-mono text-xs text-[#F5F2EB]/45">pending</p>
+              <strong class="text-3xl text-white">18</strong>
+            </div>
+            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+              <p class="font-mono text-xs text-[#F5F2EB]/45">paid</p>
+              <strong class="text-3xl text-white">42</strong>
+            </div>
+            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+              <p class="font-mono text-xs text-[#F5F2EB]/45">fulfilled</p>
+              <strong class="text-3xl text-white">39</strong>
+            </div>
+          </div>
+          <div class="mt-4 space-y-3">
+            <% ["Razorpay signature verified", "Inventory reserved", "Admin status stream broadcast"].each do |event| %>
+              <div class="flex items-center justify-between rounded-lg border border-white/10 bg-[#0a0a0a] p-3">
+                <span class="text-sm text-[#F5F2EB]/70"><%= event %></span>
+                <span class="font-mono text-xs text-emerald-200">ok</span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-6">
+      <% @hypee_metrics.each do |label, value| %>
+        <div class="rounded-lg border border-white/10 bg-white/[0.04] p-5">
+          <p class="font-mono text-xs text-[#F5F2EB]/45"><%= label %></p>
+          <strong class="mt-2 block text-3xl text-white"><%= value %></strong>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="border-y border-white/10 bg-[#0F0F0F] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
+      <article class="glass-card" data-controller="search-demo" data-search-demo-products-value="<%= @search_products.to_json %>">
+        <p class="font-mono text-sm text-[#CC342D]">Search Engine</p>
+        <h2 class="mt-2 text-3xl font-black text-white">pg_search-shaped discovery across 6 models.</h2>
+        <p class="mt-3 text-[#F5F2EB]/62">The production pattern uses trigram indexes, tsearch prefix matching, and model-level ranking. This Rails demo mirrors the interaction contract.</p>
+        <label class="mt-6 block font-mono text-xs text-[#F5F2EB]/55" for="hypee-search">query</label>
+        <input id="hypee-search" value="checkout" data-search-demo-target="query" data-action="input->search-demo#search" class="mt-2 w-full rounded-lg border border-white/12 bg-black/55 px-4 py-3 font-mono text-sm text-white outline-none focus:border-[#CC342D]">
+        <div class="mt-4 grid gap-3" data-search-demo-target="results"></div>
+        <p class="mt-4 font-mono text-xs text-emerald-200">observed latency: <span data-search-demo-target="metric">31ms</span></p>
+      </article>
+
+      <article class="glass-card" data-controller="payment-flow">
+        <p class="font-mono text-sm text-[#CC342D]">Payment Flow</p>
+        <h2 class="mt-2 text-3xl font-black text-white">Checkout to fulfillment, with verification at the center.</h2>
+        <div class="mt-6 grid gap-3" data-payment-flow-target="steps">
+          <% ["checkout", "signature", "webhook", "fulfilled"].each_with_index do |step, index| %>
+            <button type="button" data-action="payment-flow#select" data-payment-flow-index-param="<%= index %>" class="payment-step rounded-lg border border-white/10 px-4 py-3 text-left font-mono text-sm transition">
+              <span class="mr-3 text-[#CC342D]">0<%= index + 1 %></span><%= step %>
+            </button>
+          <% end %>
+        </div>
+        <p class="mt-5 rounded-lg border border-white/10 bg-black/35 p-4 text-sm leading-6 text-[#F5F2EB]/68" data-payment-flow-target="copy"></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-3">
+      <article class="rounded-lg border border-white/10 bg-white/[0.04] p-6" data-controller="view-toggle">
+        <p class="font-mono text-sm text-[#CC342D]">Soft-Delete Pattern</p>
+        <h2 class="mt-2 text-2xl font-bold text-white">Preserve order history by role.</h2>
+        <div class="mt-5 grid grid-cols-2 gap-2">
+          <button type="button" data-action="view-toggle#show" data-view-toggle-mode-param="admin" class="rounded-lg border border-white/10 px-3 py-2 font-mono text-xs">Admin View</button>
+          <button type="button" data-action="view-toggle#show" data-view-toggle-mode-param="customer" class="rounded-lg border border-white/10 px-3 py-2 font-mono text-xs">Customer View</button>
+        </div>
+        <div class="mt-5 rounded-lg border border-white/10 bg-black/35 p-4 text-sm leading-6 text-[#F5F2EB]/65" data-view-toggle-target="panel"></div>
+      </article>
+
+      <article class="rounded-lg border border-white/10 bg-white/[0.04] p-6" data-controller="otp">
+        <p class="font-mono text-sm text-[#CC342D]">Auth Flow</p>
+        <h2 class="mt-2 text-2xl font-bold text-white">Devise login plus OTP simulation.</h2>
+        <div class="mt-5 flex gap-2" aria-label="OTP input simulation">
+          <% 6.times do |index| %>
+            <input maxlength="1" inputmode="numeric" data-otp-target="digit" data-action="input->otp#advance keydown.backspace->otp#retreat" aria-label="OTP digit <%= index + 1 %>" class="h-12 w-10 rounded-lg border border-white/10 bg-black/45 text-center font-mono text-lg outline-none focus:border-[#CC342D]">
+          <% end %>
+        </div>
+        <p class="mt-4 font-mono text-sm text-[#F5F2EB]/55" data-otp-target="status">Waiting for 6 digits.</p>
+      </article>
+
+      <article class="rounded-lg border border-white/10 bg-white/[0.04] p-6">
+        <p class="font-mono text-sm text-[#CC342D]">Role Namespace</p>
+        <h2 class="mt-2 text-2xl font-bold text-white">Customer and admin stay separate.</h2>
+        <div class="mt-5 space-y-3 font-mono text-sm">
+          <div class="rounded-lg border border-white/10 bg-black/35 p-3">/products -> storefront discovery</div>
+          <div class="rounded-lg border border-white/10 bg-black/35 p-3">/admin/orders -> operations control</div>
+          <div class="rounded-lg border border-white/10 bg-black/35 p-3">/webhooks/razorpay -> idempotent state sync</div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
